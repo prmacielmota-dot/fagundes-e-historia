@@ -58,14 +58,74 @@ const fendaQs=[
 function startFenda(){fenda={step:0,locked:false,error:'',moving:false};renderFenda();}
 function renderFenda(){if(!Object.hasOwn(fenda,'step'))startFenda();else {let q=fendaQs[fenda.step];stage.innerHTML=head('DESAFIO 05','Passagem virtual pela fenda','Responda corretamente para completar três passagens digitais. O desafio é uma simulação, não um convite para passar por uma fenda real.',`${fenda.step} DE 3 PASSAGENS`)+`<div class="fenda-scene"><div class="fenda-left"></div><div class="fenda-right"></div><span id="fendaPlayer" class="fenda-player ${fenda.moving?'go':''}" aria-label="Explorador virtual">🚶</span></div>${progress(fenda.step,3)}${q?`<p class="question-title">${esc(q.q)}</p><div class="game-options">${q.a.map((a,i)=>`<button class="game-option" data-fenda-answer="${i}" ${fenda.locked?'disabled':''}>${esc(a)}</button>`).join('')}</div>${fenda.error?`<p class="game-feedback bad">${esc(fenda.error)}</p>`:''}`:`<div class="victory-card"><h3>As três passagens foram concluídas!</h3><p>Você superou o desafio virtual e aprendeu sobre nosso patrimônio.</p><button class="game-btn" data-action="startFenda">Jogar novamente</button></div>`}`;}}
 function answerFenda(i){if(fenda.locked||!fendaQs[fenda.step])return;if(i!==fendaQs[fenda.step].c){fenda.error='Essa não é a resposta. Leia a pergunta e tente novamente!';renderFenda();return;}fenda.locked=true;fenda.error='';fenda.moving=true;renderFenda();setTimeout(()=>{{fenda.step++;fenda.locked=false;fenda.moving=false;if(currentGame==='fenda')renderFenda();}},850);}
+
 function rng(seed){let s=seed;return ()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
-function makeWords(){const words=['FAGUNDES','CARIRIS','PEDRA','SERRA','CULTURA','MEMORIA'];const size=12;const rand=rng(1961);const grid=Array.from({length:size},()=>Array(size).fill(''));const directions=[[1,0],[0,1],[1,1],[1,-1]];for(const w of words){let ok=false;for(let tries=0;tries<200&&!ok;tries++){const dr=directions[Math.floor(rand()*directions.length)];const r=Math.floor(rand()*size),c=Math.floor(rand()*size);const endr=r+dr[0]*(w.length-1),endc=c+dr[1]*(w.length-1);if(endr>=size||endc>=size||endc<0)continue;let can=true;for(let j=0;j<w.length;j++){const ch=grid[r+dr[0]*j][c+dr[1]*j];if(ch&&ch!==w[j])can=false;}if(!can)continue;for(let j=0;j<w.length;j++)grid[r+dr[0]*j][c+dr[1]*j]=w[j];ok=true;}}const letters='ABCEFGHILMNOPRSTUV';grid.forEach(row=>row.forEach((v,i)=>{if(!v)row[i]=letters[Math.floor(rand()*letters.length)];}));return {grid,words,found:[],foundCells:[],first:null,notice:'Toque na primeira e na última letra de cada palavra.'};}
-function renderWords(){if(!wordsearch.grid)wordsearch=makeWords();const w=wordsearch;stage.innerHTML=head('DESAFIO 06','Caça-palavras de Fagundes','Encontre nomes ligados à história local. Toque primeiro na letra inicial, depois na última letra da palavra.',`${w.found.length} DE ${w.words.length}`)+`<div class="wordsearch-wrap"><div><div class="word-grid" role="group" aria-label="Grade de caça-palavras">${w.grid.flatMap((row,r)=>row.map((letter,c)=>{const k=r+','+c;return `<button data-cell="${k}" class="word-cell ${w.first===k?'selected':''} ${w.foundCells.includes(k)?'found':''}" aria-label="Linha ${r+1}, coluna ${c+1}, letra ${letter}">${letter}</button>`;})).join('')}</div><p class="game-hint" aria-live="polite">${esc(w.notice)}</p></div><div class="word-list"><h4>Encontre:</h4>${w.words.map(x=>`<p class="${w.found.includes(x)?'done':''}">${x} ${w.found.includes(x)?'✓':''}</p>`).join('')}${w.found.length===w.words.length?'<p>🎉 Você encontrou todas!</p>':''}<div class="game-actions"><button class="game-btn secondary" data-action="resetWords">Recomeçar</button></div></div></div>`;}
-function chooseWord(cell){const w=wordsearch;if(w.found.length===w.words.length)return;if(!w.first){w.first=cell;w.notice='Agora toque na última letra da palavra.';renderWords();return;}const [r1,c1]=w.first.split(',').map(Number),[r2,c2]=cell.split(',').map(Number);const dr=Math.sign(r2-r1),dc=Math.sign(c2-c1);const drow=Math.abs(r2-r1),dcol=Math.abs(c2-c1);let path=[];if((drow===0||dcol===0||drow===dcol)&&!(drow===0&&dcol===0)){const len=Math.max(drow,dcol)+1;path=Array.from({length:len},(_,i)=>[r1+i*dr,c1+i*dc]);}const letters=path.map(([r,c])=>w.grid[r]?.[c]||'').join('');const word=w.words.find(x=>!w.found.includes(x)&&(x===letters||x===letters.split('').reverse().join('')));if(word){w.found.push(word);path.forEach(([r,c])=>w.foundCells.push(r+','+c));w.notice='Muito bem! Você encontrou '+word+'.';}else w.notice='Ainda não! Tente outra sequência em linha reta.';w.first=null;renderWords();}
+const wordLevels={
+  facil:{title:'Fácil',size:9,words:['FAGUNDES','PEDRA','SERRA','FEIRA','CARIRI'],directions:[[0,1],[1,0]],hint:'Palavras da esquerda para a direita (→) ou de cima para baixo (↓).'},
+  intermediario:{title:'Intermediário',size:12,words:['FAGUNDES','CARIRIS','PEDRA','SERRA','CULTURA','MEMORIA','CAPELA'],directions:[[0,1],[1,0],[-1,0],[1,1],[-1,1]],hint:'Além da horizontal (→), procure na vertical (↓ ↑) e na diagonal (↘ ↗).'},
+  dificil:{title:'Difícil',size:15,words:['FAGUNDES','CARIRIS','PEDRA','SERRA','CULTURA','MEMORIA','CAPELA','HISTORIA','TURISMO','TRADICAO'],directions:[[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]],hint:'Todas as oito direções estão valendo, inclusive palavras invertidas (← ↑ ↖ ↙).'}
+};
+let wordLevel='facil';
+let wordRound=0;
+function makeWords(level=wordLevel){
+  const cfg=wordLevels[level]||wordLevels.facil;
+  const size=cfg.size;
+  const rand=rng(1961+wordRound*97+(level==='facil'?11:level==='intermediario'?37:73));
+  const grid=Array.from({length:size},()=>Array(size).fill(''));
+  const placements={};
+  const words=cfg.words.slice().sort((a,b)=>b.length-a.length);
+  const inside=(r,c)=>r>=0&&c>=0&&r<size&&c<size;
+  for(const word of words){
+    const candidates=[];
+    for(const [dr,dc] of cfg.directions){
+      for(let r=0;r<size;r++)for(let c=0;c<size;c++){
+        if(!inside(r+dr*(word.length-1),c+dc*(word.length-1)))continue;
+        let fit=true,overlap=0;
+        const path=[];
+        for(let i=0;i<word.length;i++){
+          const rr=r+dr*i,cc=c+dc*i;
+          if(grid[rr][cc]&&grid[rr][cc]!==word[i]){fit=false;break;}
+          if(grid[rr][cc]===word[i])overlap++;
+          path.push(rr+','+cc);
+        }
+        if(fit)candidates.push({path,overlap,random:rand()});
+      }
+    }
+    if(!candidates.length)throw Error('Não foi possível montar o caça-palavras: '+word);
+    candidates.sort((a,b)=>(b.overlap*0.15+b.random)-(a.overlap*0.15+a.random));
+    const picked=candidates[0];
+    picked.path.forEach((key,i)=>{const [r,c]=key.split(',').map(Number);grid[r][c]=word[i];});
+    placements[word]=picked.path;
+  }
+  const letters='ABCEFGHILMNOPRSTUV';
+  grid.forEach(row=>row.forEach((ch,i)=>{if(!ch)row[i]=letters[Math.floor(rand()*letters.length)];}));
+  return {level,grid,words:cfg.words,placements,found:[],foundCells:[],first:null,notice:'Toque na primeira letra e depois na última para marcar a palavra.'};
+}
+function renderWords(){
+  if(!wordsearch.grid)wordsearch=makeWords();
+  const w=wordsearch,cfg=wordLevels[w.level];
+  const selector='<div class="word-levels" role="group" aria-label="Nível do caça-palavras">'+Object.entries(wordLevels).map(([id,item])=>'<button type="button" class="word-level '+(w.level===id?'active':'')+'" data-word-level="'+id+'" aria-pressed="'+(w.level===id)+'">'+item.title+'</button>').join('')+'</div>';
+  const grid='<div class="word-grid" style="grid-template-columns:repeat('+cfg.size+',minmax(0,1fr))" role="group" aria-label="Grade de '+cfg.size+' por '+cfg.size+' letras">'+w.grid.flatMap((row,r)=>row.map((letter,c)=>{const k=r+','+c;return '<button type="button" data-cell="'+k+'" class="word-cell '+(w.first===k?'selected ':'')+(w.foundCells.includes(k)?'found':'')+'" aria-label="Linha '+(r+1)+', coluna '+(c+1)+', letra '+letter+'">'+letter+'</button>';})).join('')+'</div>';
+  const list='<div class="word-list"><h4>Encontre:</h4>'+w.words.map(x=>'<p class="'+(w.found.includes(x)?'done':'')+'">'+x+(w.found.includes(x)?' ✓':'')+'</p>').join('')+(w.found.length===w.words.length?'<p>🎉 Parabéns! Você completou o nível '+cfg.title+'!</p>':'')+'<div class="game-actions"><button class="game-btn secondary" data-action="resetWords">Nova partida</button></div></div>';
+  stage.innerHTML=head('DESAFIO 06','Caça-palavras de Fagundes','Escolha uma dificuldade. Encontre as palavras ligadas à história e à cultura local.',w.found.length+' DE '+w.words.length)+selector+'<p class="word-level-hint"><strong>'+cfg.title+':</strong> '+cfg.hint+'</p><div class="wordsearch-wrap"><div class="word-board">'+grid+'<p class="game-hint" aria-live="polite">'+esc(w.notice)+'</p></div>'+list+'</div>';
+}
+function chooseWord(cell){
+  const w=wordsearch;if(w.found.length===w.words.length)return;
+  if(!w.first){w.first=cell;w.notice='Agora toque na última letra da palavra.';renderWords();return;}
+  const first=w.first;
+  w.first=null;
+  const word=w.words.find(x=>!w.found.includes(x)&&((w.placements[x][0]===first&&w.placements[x][w.placements[x].length-1]===cell)||(w.placements[x][0]===cell&&w.placements[x][w.placements[x].length-1]===first)));
+  if(word){
+    w.found.push(word);
+    for(const cellKey of w.placements[word])if(!w.foundCells.includes(cellKey))w.foundCells.push(cellKey);
+    w.notice=w.found.length===w.words.length?'Excelente! Você concluiu o nível '+wordLevels[w.level].title+'!':'Muito bem! Você encontrou '+word+'.';
+  }else w.notice='Ainda não! Tente novamente ou escolha outra letra inicial.';
+  renderWords();
+}
 function makePuzzle(){let cells=[1,2,3,4,5,6,7,8,0];let previous=-1;for(let n=0;n<70;n++){const blank=cells.indexOf(0);const neighbors=getNeighbors(blank).filter(x=>x!==previous);const dest=neighbors[Math.floor(Math.random()*neighbors.length)];[cells[blank],cells[dest]]=[cells[dest],cells[blank]];previous=blank;}return {cells,moves:0,solved:false};}
 function getNeighbors(i){const row=Math.floor(i/3),col=i%3;return [[row-1,col],[row+1,col],[row,col-1],[row,col+1]].filter(([r,c])=>r>=0&&r<3&&c>=0&&c<3).map(([r,c])=>r*3+c);}
 function renderPuzzle(){if(!puzzle.cells)puzzle=makePuzzle();stage.innerHTML=head('DESAFIO 07','Quebra-cabeça da pedra','Organize as peças deslizando os quadrados vizinhos do espaço vazio até reconstruir a ilustração.',`${puzzle.moves} movimento${puzzle.moves===1?'':'s'}`)+`<div class="puzzle-layout"><div class="puzzle-board">${puzzle.cells.map((v,i)=>`<button class="puzzle-tile ${v===0?'empty':''}" data-puzzle="${i}" ${v===0?'disabled':''} ${v===0?'aria-label="Espaço vazio"':`aria-label="Peça ${v}" data-number="${v}" style="background-position:${((v-1)%3)*50}% ${Math.floor((v-1)/3)*50}%"`}></button>`).join('')}</div><div><p class="game-kicker">IMAGEM DE REFERÊNCIA</p><img class="puzzle-preview" src="assets/pedra-ilustracao.svg" alt="Desenho completo dos rochedos e da capela"><p class="game-hint">Selecione uma peça ao lado do espaço vazio. O quebra-cabeça é embaralhado com movimentos válidos e sempre pode ser resolvido.</p>${puzzle.solved?'<div class="game-feedback">🎉 Parabéns! Você reconstruiu a imagem!</div>':''}<div class="game-actions"><button class="game-btn secondary" data-action="resetPuzzle">Embaralhar de novo</button></div></div></div>`;}
 function movePuzzle(i){const blank=puzzle.cells.indexOf(0);if(!getNeighbors(blank).includes(i))return;[puzzle.cells[blank],puzzle.cells[i]]=[puzzle.cells[i],puzzle.cells[blank]];puzzle.moves++;puzzle.solved=puzzle.cells.every((x,i)=>x===(i===8?0:i+1));renderPuzzle();}
-function handleAction(action){switch(action){case'startQuiz':startQuiz();break;case'resetQuiz':quiz={};renderQuiz();break;case'nextQuiz':quiz.index++;quiz.locked=false;quiz.choice=null;renderQuiz();break;case'startMemory':startMemory();break;case'startStone':startStone();break;case'resetStone':stone={};renderStone();break;case'nextStone':stone.index++;stone.locked=false;stone.choice=null;renderStone();break;case'moveSanto':moveSanto();break;case'startFenda':startFenda();break;case'resetWords':wordsearch=makeWords();renderWords();break;case'resetPuzzle':puzzle=makePuzzle();renderPuzzle();break;}}
-stage.addEventListener('click',event=>{const target=event.target.closest('button');if(!target)return;if(target.dataset.action)handleAction(target.dataset.action);else if(target.dataset.answer!==undefined)answerQuiz(Number(target.dataset.answer));else if(target.dataset.stoneAnswer!==undefined)answerStone(Number(target.dataset.stoneAnswer));else if(target.dataset.memory!==undefined)flipMemory(Number(target.dataset.memory));else if(target.dataset.fendaAnswer!==undefined)answerFenda(Number(target.dataset.fendaAnswer));else if(target.dataset.cell!==undefined)chooseWord(target.dataset.cell);else if(target.dataset.puzzle!==undefined)movePuzzle(Number(target.dataset.puzzle));});
+function handleAction(action){switch(action){case'startQuiz':startQuiz();break;case'resetQuiz':quiz={};renderQuiz();break;case'nextQuiz':quiz.index++;quiz.locked=false;quiz.choice=null;renderQuiz();break;case'startMemory':startMemory();break;case'startStone':startStone();break;case'resetStone':stone={};renderStone();break;case'nextStone':stone.index++;stone.locked=false;stone.choice=null;renderStone();break;case'moveSanto':moveSanto();break;case'startFenda':startFenda();break;case'resetWords':wordRound++;wordsearch=makeWords();renderWords();break;case'resetPuzzle':puzzle=makePuzzle();renderPuzzle();break;}}
+stage.addEventListener('click',event=>{const target=event.target.closest('button');if(!target)return;if(target.dataset.wordLevel){wordLevel=target.dataset.wordLevel;wordRound=0;wordsearch=makeWords(wordLevel);renderWords();}else if(target.dataset.action)handleAction(target.dataset.action);else if(target.dataset.answer!==undefined)answerQuiz(Number(target.dataset.answer));else if(target.dataset.stoneAnswer!==undefined)answerStone(Number(target.dataset.stoneAnswer));else if(target.dataset.memory!==undefined)flipMemory(Number(target.dataset.memory));else if(target.dataset.fendaAnswer!==undefined)answerFenda(Number(target.dataset.fendaAnswer));else if(target.dataset.cell!==undefined)chooseWord(target.dataset.cell);else if(target.dataset.puzzle!==undefined)movePuzzle(Number(target.dataset.puzzle));});
 switchGame('quiz');
