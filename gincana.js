@@ -174,3 +174,5 @@ stage.addEventListener('click',gHandleClick);
 stage.addEventListener('input',e=>{if(currentGame!=='gincana'||gState)return;if(e.target.id==='gSchool')gDraftSchool=e.target.value;if(e.target.id==='gClass')gDraftClass=e.target.value;if(e.target.dataset.gincanaName!==undefined)gDraftNames[Number(e.target.dataset.gincanaName)]=e.target.value;});
 stage.addEventListener('change',e=>{if(currentGame==='gincana'&&e.target?.id==='gCount')gSetCount(Number(e.target.value));});
 function renderGincana(){gRender();}
+// Abre a gincana na primeira visita, preservando os outros jogos no menu.
+switchGame('gincana');
