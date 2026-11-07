@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173a37">
+  <meta name="description" content="Descubra a história, as tradições, os patrimônios e a memória de Fagundes, na Paraíba. Aprenda com jogos educativos interativos e gratuitos.">
+  <meta property="og:title" content="Fagundes é História — Memória que vira descoberta">
+  <meta property="og:description" content="Conheça Fagundes-PB e aprenda brincando. Portal público e gratuito de história local.">
+  <meta property="og:type" content="website">
+  <title>Fagundes é História | Patrimônio, memória e jogos</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT@9..144,600,0;9..144,700,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="topline"><span>✦</span> Um convite para conhecer, preservar e ensinar nossa história <span>✦</span></div>
+  <header class="site-header" id="topo">
+    <div class="container nav-wrap">
+      <a class="brand" href="#topo" aria-label="Fagundes é História — página inicial">
+        <span class="brand-symbol" aria-hidden="true">◭</span>
+        <span class="brand-copy"><strong>Fagundes</strong><small>É HISTÓRIA</small></span>
+      </a>
+      <nav id="navigation" class="nav-links" aria-label="Menu principal">
+        <a href="#historia">Nossa história</a><a href="#cidade">Conheça a cidade</a><a href="#pedra">A lenda da pedra</a><a href="#jogos">Jogos educativos</a><a href="#fontes">Fontes</a>
+      </nav>
+      <a class="nav-cta" href="#jogos">Vamos jogar <span aria-hidden="true">↗</span></a>
+      <button id="menuToggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navigation">☰</button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <span class="eyebrow hero-eyebrow"><span class="dot"></span> PARAÍBA • SERRA DO BODOPITÁ</span>
+        <h1 id="hero-title">Cada pedra conta<br>uma <em>história.</em></h1>
+        <p>Conheça Fagundes por suas paisagens, sua gente, suas lutas e suas tradições. Depois, descubra quanto você aprendeu — jogando.</p>
+        <div class="hero-actions"><a href="#historia" class="btn btn-light">Explorar a história <span aria-hidden="true">↗</span></a><a href="#jogos" class="btn btn-outline-light">Aprender jogando <span aria-hidden="true">▶</span></a></div>
+        <div class="hero-foot"><span>Uma experiência feita para estudantes, moradores e visitantes</span><span class="scroll-cue">DESCUBRA ↓</span></div>
+      </div>
+      <div class="hero-stamp" aria-hidden="true"><span>MEMÓRIA<br>VIVA</span><small>FAGUNDES • PB</small></div>
+    </section>
+
+    <section class="facts-strip" aria-label="Fagundes em números"><div class="container facts-grid">
+      <div><strong>1961</strong><span>Emancipação política</span></div>
+      <div><strong>11.049</strong><span>Habitantes • Censo 2022</span></div>
+      <div><strong>Cariris</strong><span>Povos originários da região</span></div>
+      <div><strong>PB</strong><span>Orgulho paraibano</span></div>
+    </div></section>
+
+    <section class="section history" id="historia"><div class="container">
+      <div class="section-header"><div><span class="eyebrow accent">01 / NOSSA ORIGEM</span><h2>O passado vive<br>no <em>presente.</em></h2></div><p>Antes de existir como município, Fagundes já era território de encontros, disputas, trabalho e resistência. Conhecer essas camadas ajuda a compreender quem somos.</p></div>
+      <div class="timeline" aria-label="Linha do tempo histórica">
+        <article class="timeline-item"><span class="timeline-year">Antes da colonização</span><div><h3>Presença dos povos Cariris</h3><p>A presença indígena é parte fundamental da história da região. Os povos Cariris habitaram o território antes da ocupação colonial.</p></div><span class="timeline-index">01</span></article>
+        <article class="timeline-item"><span class="timeline-year">Séculos XVII–XVIII</span><div><h3>Canas Bravas e a ocupação colonial</h3><p>O território aparece em registros antigos relacionados à Serra do Bodopitá, às sesmarias e à antiga denominação de Canas Bravas.</p></div><span class="timeline-index">02</span></article>
+        <article class="timeline-item"><span class="timeline-year">1852</span><div><h3>Ronco da Abelha</h3><p>Uma mobilização popular que se espalhou pela região em meio a conflitos com medidas do Império.</p></div><span class="timeline-index">03</span></article>
+        <article class="timeline-item"><span class="timeline-year">1874</span><div><h3>Quebra-Quilos</h3><p>O movimento questionou mudanças e imposições envolvendo pesos, medidas e práticas de fiscalização, envolvendo diferentes localidades paraibanas.</p></div><span class="timeline-index">04</span></article>
+        <article class="timeline-item"><span class="timeline-year">1888–1891</span><div><h3>Primeira experiência municipal</h3><p>Registros do IBGE relatam uma primeira elevação de Fagundes à condição de município, seguida da perda dessa autonomia.</p></div><span class="timeline-index">05</span></article>
+        <article class="timeline-item"><span class="timeline-year">22 dez. 1961</span><div><h3>A emancipação definitiva</h3><p>Lei Estadual nº 2.661: Fagundes se desmembra de Campina Grande. A instalação do município ocorreu em 31 de dezembro do mesmo ano.</p></div><span class="timeline-index">06</span></article>
+        <article class="timeline-item"><span class="timeline-year">1983</span><div><h3>Quebra-Canos</h3><p>Uma disputa pelo abastecimento de água marcou a memória política e social local, segundo o registro histórico da prefeitura.</p></div><span class="timeline-index">07</span></article>
+      </div>
+      <p class="source-note">Síntese baseada na <a href="https://fagundes.pb.gov.br/a-cidade/historia" target="_blank" rel="noopener noreferrer">história publicada pela Prefeitura</a> e no <a href="https://www.ibge.gov.br/biblioteca/visualizacao/dtb/paraiba/fagundes.pdf" target="_blank" rel="noopener noreferrer">histórico do IBGE</a>. Detalhes, datas e interpretações podem variar entre fontes históricas.</p>
+    </div></section>
+
+    <section class="section discovery" id="cidade"><div class="container">
+      <div class="section-header"><div><span class="eyebrow accent">02 / DESCUBRA FAGUNDES</span><h2>Uma cidade.<br><em>Muitas histórias.</em></h2></div><p>Um roteiro de descobertas que vai além de datas e monumentos: lugares, cultura, cidadania e pessoas que fazem a cidade existir.</p></div>
+      <div class="discovery-grid">
+        <article class="discovery-card discover-photo"><div class="d-card-top"><span class="tag tag-light">NATUREZA + FÉ</span><span class="corner-arrow">↗</span></div><div class="d-card-bottom"><span>01 — PATRIMÔNIO</span><h3>Pedra de<br>Santo Antônio</h3><p>O principal símbolo turístico local reúne natureza, religiosidade e tradição oral.</p><a href="#pedra">Descobrir a lenda ↗</a></div></article>
+        <article class="discovery-card tone-cream"><div class="d-card-top"><span class="tag">ECONOMIA</span><span class="mini-icon">✳</span></div><div class="d-card-bottom"><span>02 — TRABALHO</span><h3>Campo, feira<br>e comércio</h3><p>A agricultura familiar, o comércio local e os serviços ajudam a contar a história econômica de Fagundes. O IBGE reúne os indicadores do município.</p><a href="https://www.ibge.gov.br/cidades-e-estados/pb/fagundes.html" target="_blank" rel="noopener noreferrer">Ver dados do IBGE ↗</a></div></article>
+        <article class="discovery-card tone-green"><div class="d-card-top"><span class="tag tag-light">RELIGIOSIDADE</span><span class="mini-icon">✝</span></div><div class="d-card-bottom"><span>03 — CRENÇAS</span><h3>Fé e<br>tradições</h3><p>A devoção popular associada à pedra, igrejas e diferentes comunidades religiosas compõem uma paisagem de fé plural.</p><a href="https://diocesecg.org/pagina/atendimento-nas-paroquias" target="_blank" rel="noopener noreferrer">Conhecer uma fonte ↗</a></div></article>
+        <article class="discovery-card tone-stone"><div class="d-card-top"><span class="tag">POLÍTICA E CIDADANIA</span><span class="mini-icon">◎</span></div><div class="d-card-bottom"><span>04 — VIDA PÚBLICA</span><h3>Direitos e<br>participação</h3><p>Prefeitura e Câmara exercem funções distintas. Compreender o Executivo e o Legislativo é também conhecer a história política do município.</p><a href="https://camarafagundes.pb.gov.br/" target="_blank" rel="noopener noreferrer">Acessar a Câmara ↗</a></div></article>
+        <article class="discovery-card tone-gold"><div class="d-card-top"><span class="tag">PRÉDIOS PÚBLICOS</span><span class="mini-icon">▥</span></div><div class="d-card-bottom"><span>05 — ESPAÇOS DA CIDADE</span><h3>Edifícios<br>que contam</h3><p>Escolas, Câmara, Prefeitura, igrejas e praças são locais onde a memória e a vida cotidiana se encontram. Explore seus papéis e transformações.</p><a href="#educadores">Proposta de pesquisa ↗</a></div></article>
+        <article class="discovery-card tone-orange"><div class="d-card-top"><span class="tag tag-light">PERSONALIDADES</span><span class="mini-icon">✺</span></div><div class="d-card-bottom"><span>06 — NOSSA GENTE</span><h3>Vozes da<br>história</h3><p>O histórico do IBGE menciona Geraldo F. Dantas, Salvino Figueiredo e José Cruz Herculano entre os colaboradores da emancipação.</p><a href="https://www.ibge.gov.br/biblioteca/visualizacao/dtb/paraiba/fagundes.pdf" target="_blank" rel="noopener noreferrer">Consultar a fonte ↗</a></div></article>
+      </div>
+    </div></section>
+
+    <section class="legend" id="pedra"><div class="container legend-grid">
+      <div class="legend-visual"><img src="assets/pedra-ilustracao.svg" alt="Ilustração artística da Pedra de Santo Antônio, com pedras altas, paisagem verde e uma pequena capela branca"><span class="illustration-caption">ILUSTRAÇÃO ORIGINAL • REPRESENTAÇÃO ARTÍSTICA</span></div>
+      <div class="legend-copy"><span class="eyebrow">03 / TRADIÇÃO ORAL</span><h2>A pedra, o santo<br>e o <em>mistério.</em></h2><p>Conta a tradição que uma imagem de Santo Antônio foi encontrada entre as rochas. Levada para uma igreja, ela teria desaparecido e reaparecido junto à pedra. É essa narrativa popular que inspira um dos nossos jogos.</p><p>O lugar segue atraindo visitantes por sua paisagem e sua ligação com a fé. A passagem pela fenda também integra as crenças transmitidas de geração a geração.</p><div class="legend-note"><strong>História ou lenda?</strong><span>Uma lenda é uma narrativa da tradição oral. Aqui, o relato é apresentado como patrimônio cultural, não como acontecimento historicamente comprovado.</span></div><a href="#jogos" class="btn btn-amber">Conhecer os jogos ↗</a><p class="legend-source">Referência: <a href="https://paraibacriativa.com.br/artista/pedra-de-santo-antonio/" target="_blank" rel="noopener noreferrer">Paraíba Criativa — Pedra de Santo Antônio</a>.</p></div>
+    </div></section>
+
+    <section class="section games-section" id="jogos"><div class="container">
+      <div class="games-intro"><div><span class="eyebrow accent">04 / APRENDER BRINCANDO</span><h2>Agora é sua vez<br>de fazer <em>história.</em></h2><p>Jogos gratuitos para jogar sozinho, em dupla ou em trio, em um único aparelho. Ninguém precisa criar conta.</p></div><div class="games-sticker" aria-hidden="true">BORA<br>JOGAR! <span>✦</span></div></div>
+      <div class="game-app" id="gameApp">
+        <div class="game-tabs" role="tablist" aria-label="Escolha um jogo">
+          <button class="game-tab active" type="button" role="tab" aria-selected="true" data-game="quiz">❔ Quiz</button>
+          <button class="game-tab" type="button" role="tab" aria-selected="false" data-game="memoria">🧠 Memória</button>
+          <button class="game-tab" type="button" role="tab" aria-selected="false" data-game="pedra">🪨 A pedra baixa</button>
+          <button class="game-tab" type="button" role="tab" aria-selected="false" data-game="santo">⛪ O santo voltou</button>
+          <button class="game-tab" type="button" role="tab" aria-selected="false" data-game="fenda">🚶 Fenda virtual</button>
+          <button class="game-tab" type="button" role="tab" aria-selected="false" data-game="palavras">🔎 Caça-palavras</button>
+          <button class="game-tab" type="button" role="tab" aria-selected="false" data-game="puzzle">🧩 Quebra-cabeça</button>
+        </div>
+        <div id="gameStage" class="game-stage" aria-live="polite"></div>
+      </div>
+      <p class="game-disclaimer">Os desafios da pedra e da fenda são <strong>representações digitais fictícias</strong>. Não representam instruções de exploração física nem recomendam atravessar fendas reais. Em visitas, respeite sinalização e orientações locais.</p>
+      <div class="future-games"><span>PRÓXIMAS IDEIAS</span><div><p><strong>Mapa do tesouro</strong> — encontre patrimônios da cidade</p><p><strong>Detetives da memória</strong> — descubra pistas em documentos</p><p><strong>Linha do tempo</strong> — ordene acontecimentos</p></div></div>
+    </div></section>
+
+    <section class="section teachers" id="educadores"><div class="container teachers-grid"><div><span class="eyebrow accent">05 / PARA A ESCOLA</span><h2>A cidade também<br>é uma <em>sala de aula.</em></h2><p>Este portal pode apoiar aulas de História, Geografia e projetos interdisciplinares. Na dinâmica em equipes, as perguntas passam de uma equipe a outra no mesmo dispositivo.</p><a href="#jogos" class="btn btn-dark">Abrir jogos educativos ↗</a></div><div class="teachers-tips"><h3>Proposta de oficina</h3><div><span>01</span><p><strong>Investigar</strong> — leia um trecho da história local e identifique sua fonte.</p></div><div><span>02</span><p><strong>Colaborar</strong> — jogue em dupla ou trio e discuta as respostas.</p></div><div><span>03</span><p><strong>Pesquisar</strong> — fotografe ou desenhe um patrimônio e investigue sua função.</p></div><div><span>04</span><p><strong>Registrar</strong> — crie um pequeno relato de história oral com autorização do entrevistado.</p></div></div></div></section>
+
+    <section class="section sources" id="fontes"><div class="container"><div class="section-header"><div><span class="eyebrow accent">06 / TRANSPARÊNCIA</span><h2>Fontes que sustentam<br>a <em>descoberta.</em></h2></div><p>Um portal de história precisa deixar claro o que está documentado, o que é tradição oral e o que ainda precisa ser pesquisado.</p></div>
+      <div class="sources-grid"><a target="_blank" rel="noopener noreferrer" href="https://fagundes.pb.gov.br/a-cidade/historia"><span>01</span><strong>Prefeitura de Fagundes</strong><small>História e movimentos locais</small><b>↗</b></a><a target="_blank" rel="noopener noreferrer" href="https://www.ibge.gov.br/biblioteca/visualizacao/dtb/paraiba/fagundes.pdf"><span>02</span><strong>IBGE — Histórico do município</strong><small>Formação administrativa e emancipação</small><b>↗</b></a><a target="_blank" rel="noopener noreferrer" href="https://www.ibge.gov.br/cidades-e-estados/pb/fagundes.html"><span>03</span><strong>IBGE — Cidades e Estados</strong><small>População e indicadores públicos</small><b>↗</b></a><a target="_blank" rel="noopener noreferrer" href="https://paraibacriativa.com.br/artista/pedra-de-santo-antonio/"><span>04</span><strong>Paraíba Criativa</strong><small>Pedra de Santo Antônio e tradição oral</small><b>↗</b></a><a target="_blank" rel="noopener noreferrer" href="https://camarafagundes.pb.gov.br/"><span>05</span><strong>Câmara Municipal</strong><small>Poder Legislativo e participação</small><b>↗</b></a><a target="_blank" rel="noopener noreferrer" href="https://fagundes.pb.gov.br/"><span>06</span><strong>Portal institucional</strong><small>Informações atuais do município</small><b>↗</b></a></div>
+      <p class="source-note">Versão inicial de demonstração educativa. Ainda não é um inventário completo ou oficial do patrimônio municipal. Imagens da pedra são ilustrações originais, não fotografias. Conteúdos podem ser ampliados mediante pesquisa documental, entrevistas autorizadas e curadoria editorial.</p>
+    </div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="#topo"><span class="brand-symbol" aria-hidden="true">◭</span><span class="brand-copy"><strong>Fagundes</strong><small>É HISTÓRIA</small></span></a><p>Memória que vira descoberta.<br>Um portal educativo dedicado à cidade de Fagundes, Paraíba.</p></div><div><strong>Explorar</strong><a href="#historia">Nossa história</a><a href="#cidade">Conheça a cidade</a><a href="#jogos">Jogos interativos</a><a href="#fontes">Fontes</a></div><div><strong>Compromisso</strong><p>Acesso gratuito • Sem login de visitante • Conteúdo educativo • Respeito à diversidade cultural e religiosa</p></div></div><div class="container footer-bottom"><span>© <span id="copyrightYear"></span> Fagundes é História — protótipo educativo.</span><a href="#topo">Voltar ao topo ↑</a></div></footer>
+</body></html>
