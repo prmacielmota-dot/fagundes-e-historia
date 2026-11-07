@@ -50,15 +50,15 @@ origens:[
 ],
 povoamento:[
  {q:'Como o lugar era também conhecido em registros antigos?',a:['Canas Bravas','Pedras Vermelhas','Rio das Pedras'],c:0,tip:'O nome Canas Bravas aparece em narrativas históricas sobre o território.'},
- {q:'Teodósio de Oliveira Ledo aparece na história da região ligado a quê?',a:['Expansão colonial para o interior','Criação do rádio','Construção de aeroportos'],c:0,tip:'Ele aparece em documentos da ocupação colonial. A história também deve reconhecer a presença indígena anterior.'},
- {q:'O que são povoados?',a:['Comunidades onde pessoas vivem','Apenas grandes capitais','Somente áreas de fábricas'],c:0,tip:'Com moradias e relações sociais, comunidades se formaram ao longo do tempo.'},
- {q:'Qual destes registros ajuda a estudar a formação de um lugar?',a:['Documentos e relatos','Apenas boatos','Somente jogos'],c:0,tip:'Documentos e relatos, analisados com cuidado, ajudam a investigar o passado.'}
+ {q:'Teodósio de Oliveira Ledo aparece na história da região ligado a quê?',a:['Expansão colonial para o interior','Emancipação de 1961','Movimento Quebra-Quilos'],c:0,tip:'Ele aparece em documentos da ocupação colonial. A história também deve reconhecer a presença indígena anterior.'},
+ {q:'O que são povoados?',a:['Comunidades com moradias','Terrenos sem moradores','Bairros de cidades grandes'],c:0,tip:'Com moradias e relações sociais, comunidades se formaram ao longo do tempo.'},
+ {q:'Qual destes registros ajuda a estudar a formação de um lugar?',a:['Documentos e relatos','Somente fotografias','Apenas nomes de ruas'],c:0,tip:'Documentos e relatos, analisados com cuidado, ajudam a investigar o passado.'}
 ],
 revoltas:[
  {q:'Qual movimento popular ocorreu na região em 1852?',a:['Ronco da Abelha','Quebra-Quilos','Quebra-Canos'],c:0,tip:'O Ronco da Abelha ocorreu em 1852, segundo o histórico municipal.'},
  {q:'Qual movimento ficou conhecido em 1874?',a:['Quebra-Canos','Quebra-Quilos','Ronco da Abelha'],c:1,tip:'O Quebra-Quilos teve destaque no interior paraibano em 1874.'},
- {q:'O Quebra-Quilos envolveu discussões sobre...',a:['Pesos e medidas','Horários de ônibus','Luzes das ruas'],c:0,tip:'Mudanças no sistema de pesos e medidas ajudaram a provocar a revolta.'},
- {q:'No Ronco da Abelha, houve contestação a...',a:['Decretos de registro civil','Leis de trânsito','Regras de futebol'],c:0,tip:'Decretos imperiais sobre registros civis contribuíram para o protesto.'},
+ {q:'O Quebra-Quilos envolveu discussões sobre...',a:['Pesos e medidas','Registros de nascimento','Eleições municipais'],c:0,tip:'Mudanças no sistema de pesos e medidas ajudaram a provocar a revolta.'},
+ {q:'No Ronco da Abelha, houve contestação a...',a:['Decretos de registro civil','Mudanças nos pesos e medidas','Organização de feiras'],c:0,tip:'Decretos imperiais sobre registros civis contribuíram para o protesto.'},
  {q:'O Ronco da Abelha aconteceu antes ou depois do Quebra-Quilos?',a:['Depois','Antes','No mesmo ano'],c:1,tip:'O Ronco da Abelha ocorreu em 1852; o Quebra-Quilos, em 1874.'}
 ],
 cidade:[
@@ -69,10 +69,10 @@ cidade:[
 ],
 pedra:[
  {q:'Qual é o nome da pedra ligada à tradição local?',a:['Pedra de Santo Antônio','Pedra do Ingá','Pedra da Boca'],c:0,tip:'A Pedra de Santo Antônio é um dos marcos de Fagundes.'},
- {q:'Na tradição oral, o que acontecia com a imagem de Santo Antônio?',a:['Voltava para a pedra','Virava uma estrela','Ficava num rio'],c:0,tip:'A narrativa popular diz que a imagem reaparecia junto à pedra. É uma lenda, não um fato comprovado.'},
+ {q:'Na tradição oral, o que acontecia com a imagem de Santo Antônio?',a:['Voltava para a pedra','Ficava definitivamente na capela','Era enviada a outra cidade'],c:0,tip:'A narrativa popular diz que a imagem reaparecia junto à pedra. É uma lenda, não um fato comprovado.'},
  {q:'A história da imagem que volta para a pedra é apresentada como...',a:['Tradição oral','Lei municipal','Dado do censo'],c:0,tip:'Lendas e histórias orais também fazem parte da memória cultural.'},
- {q:'Onde podemos aprender sobre o patrimônio da cidade?',a:['Fotos, relatos e documentos','Somente anúncios','Apenas palpites'],c:0,tip:'Fontes diversas ajudam a conhecer e preservar a memória local.'},
- {q:'Qual espaço é ligado à devoção popular na Pedra de Santo Antônio?',a:['Uma capela','Uma estação de trem','Um porto marítimo'],c:0,tip:'O lugar é associado à capela e a tradições religiosas populares.'}
+ {q:'Onde podemos aprender sobre o patrimônio da cidade?',a:['Fotos, relatos e documentos','Somente cartões-postais','Apenas mapas'],c:0,tip:'Fontes diversas ajudam a conhecer e preservar a memória local.'},
+ {q:'Qual espaço é ligado à devoção popular na Pedra de Santo Antônio?',a:['Uma capela','Uma escola','Uma prefeitura'],c:0,tip:'O lugar é associado à capela e a tradições religiosas populares.'}
 ]};
 let trail={started:false,players:[],turn:0,phase:'setup',dice:1,notice:'',question:null,answer:null,winner:null,turnCount:1};
 let trailCountDraft=3;
